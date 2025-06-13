@@ -1,0 +1,18 @@
+{% import "_macros.html" as macros %}
+{% extends "page.html" %}
+
+{% block header %}
+<header class="box-shadow">
+    {{ macros::render_header() }}
+</header>
+{% endblock header %}
+
+{% block content %}
+<div class="heading-text">{{ page.description }}</div>
+{{ macros::github_md_embed(filename=page.extra.fileimport) | markdown | safe }}
+{% endblock content %}
+
+{% block sidebar %}
+<div class="sidebar">
+</div>
+{% endblock sidebar %}
