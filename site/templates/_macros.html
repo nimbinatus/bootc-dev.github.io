@@ -21,8 +21,3 @@
     {% endif %}
 </nav>
 {% endmacro render_header %}
-
-{% macro github_md_embed(filename) %}
-{% set response = load_data(url="https://raw.githubusercontent.com/bootc-dev/bootc/refs/heads/main/" ~ filename ~ ".md") %}
-{{ response }}
-{% endmacro github_md_embed %}
