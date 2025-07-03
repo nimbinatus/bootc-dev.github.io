@@ -7,12 +7,52 @@
 </header>
 {% endblock header %}
 
-{% block content %}
-<div class="heading-text">{{ page.description }}</div>
-{{ macros::github_md_embed(filename=page.extra.fileimport) | markdown | safe }}
-{% endblock content %}
-
 {% block sidebar %}
 <div class="sidebar">
 </div>
 {% endblock sidebar %}
+
+{% block content %}
+{% set response = load_data(url="https://raw.githubusercontent.com/bootc-dev/bootc/refs/heads/main/" ~ page.extra.fileimport ~ ".md") %}
+<div class="heading-text">{{ page.description }}</div>
+{{ response | markdown | safe }}
+{% endblock content %}
+
+{% block toc %}
+{% set response = load_data(url="https://raw.githubusercontent.com/bootc-dev/bootc/refs/heads/main/" ~ page.extra.fileimport ~ ".md") %}
+{% set toc = response | markdown | linebreaksbr | split(pat="<br>") %}
+{% set mapset = [] %}
+{%- for elem in toc %}
+    {%- if elem is starting_with("<h") %}
+        {%- set mapset1 = elem | regex_replace(pattern=`<h(?P<level>\d) id="(?P<anchor>.*)">(?P<heading>.*)</h\d>`, rep=`$level,$anchor,$heading`) %}
+        {% set_global mapset = mapset | concat(with=mapset1) %}
+    {%- endif %}
+{%- endfor %}
+<p>{{ mapset | json_encode(pretty=true) | safe }}</p>
+<div class="toc">
+    <div class="toc-sticky">
+        <ul>
+        {%- for elem in toc %}
+            {%- if elem is starting_with("<h1") %}
+            {%- set id_val = elem | regex_replace(pattern=`<h1 id="(?P<anchor>.*)">.*</h1>`, rep=`$anchor`) %}
+            <li class="toc-item"><a href="#{{ id_val }}" class="subtext">{{ elem | regex_replace(pattern=`<h1 id=".*">(?P<heading>.*)</h1>`, rep=`$heading`) | as_str }}</a></li>
+            {%- else %}
+                <ul>
+                {%- if elem is starting_with("<h2") %}
+                    {%- set id_val = elem | regex_replace(pattern=`<h2 id="(?P<anchor>.*)">.*</h2>`, rep=`$anchor`) %}
+                <li class="toc-item"><a href="#{{ id_val }}" class="subtext">{{ elem | regex_replace(pattern=`<h2 id=".*">(?P<heading>.*)</h2>`, rep=`$heading`) | as_str }}</a></li>
+                    {%- else %}
+                    <ul>
+                        {%- if elem is starting_with("<h3") %}
+                        {%- set id_val = elem | regex_replace(pattern=`<h3 id="(?P<anchor>.*)">.*</h3>`, rep=`$anchor`) %}
+                        <li class="toc-item"><a href="#{{ id_val }}" class="subtext">{{ elem | regex_replace(pattern=`<h3 id=".*">(?P<heading>.*)</h3>`, rep=`$heading`) | as_str }}</a></li>
+                        {%- endif %}
+                    </ul>
+                {%- endif %}
+                </ul>
+            {%- endif %}
+        {%- endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock toc %}
