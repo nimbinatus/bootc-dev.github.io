@@ -1,6 +1,6 @@
 # This is the main site!
 
-This site is built using [Zola](https://www.getzola.org/), a static site generator build with Rust. The theme is [Juice](https://www.getzola.org/themes/juice/).
+This site is built using [Zola](https://www.getzola.org/), a static site generator built with Rust. The theme is [Juice](https://www.getzola.org/themes/juice/).
 - Zola [Installation instructions](https://www.getzola.org/documentation/getting-started/installation/)
 - Juice [Installation info](https://juice.huhu.io/#installation) - Note that I've explicitly dropped the git history and VCS info from the theme directory.
 
