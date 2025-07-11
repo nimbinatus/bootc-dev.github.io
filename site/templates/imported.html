@@ -28,31 +28,26 @@
         {% set_global mapset = mapset | concat(with=mapset1) %}
     {%- endif %}
 {%- endfor %}
-<p>{{ mapset | json_encode(pretty=true) | safe }}</p>
 <div class="toc">
     <div class="toc-sticky">
-        <ul>
-        {%- for elem in toc %}
-            {%- if elem is starting_with("<h1") %}
-            {%- set id_val = elem | regex_replace(pattern=`<h1 id="(?P<anchor>.*)">.*</h1>`, rep=`$anchor`) %}
-            <li class="toc-item"><a href="#{{ id_val }}" class="subtext">{{ elem | regex_replace(pattern=`<h1 id=".*">(?P<heading>.*)</h1>`, rep=`$heading`) | as_str }}</a></li>
-            {%- else %}
-                <ul>
-                {%- if elem is starting_with("<h2") %}
-                    {%- set id_val = elem | regex_replace(pattern=`<h2 id="(?P<anchor>.*)">.*</h2>`, rep=`$anchor`) %}
-                <li class="toc-item"><a href="#{{ id_val }}" class="subtext">{{ elem | regex_replace(pattern=`<h2 id=".*">(?P<heading>.*)</h2>`, rep=`$heading`) | as_str }}</a></li>
-                    {%- else %}
-                    <ul>
-                        {%- if elem is starting_with("<h3") %}
-                        {%- set id_val = elem | regex_replace(pattern=`<h3 id="(?P<anchor>.*)">.*</h3>`, rep=`$anchor`) %}
-                        <li class="toc-item"><a href="#{{ id_val }}" class="subtext">{{ elem | regex_replace(pattern=`<h3 id=".*">(?P<heading>.*)</h3>`, rep=`$heading`) | as_str }}</a></li>
-                        {%- endif %}
-                    </ul>
-                {%- endif %}
-                </ul>
-            {%- endif %}
-        {%- endfor %}
-        </ul>
+        {%- for elem in mapset %}
+            {%- set id_val = elem | regex_replace(pattern=`(?P<id>\d*),(?P<anchor>.*),(?P<heading>.*)`, rep=`$id`) %}
+            {%- set anchor = elem | regex_replace(pattern=`(?P<id>\d*),(?P<anchor>.*),(?P<heading>.*)`, rep=`$anchor`) %}
+            {%- set heading = elem | regex_replace(pattern=`(?P<id>\d*),(?P<anchor>.*),(?P<heading>.*)`, rep=`$heading`) %}
+            {%- if id_val == "1" -%}
+                <div class="toc-item">
+                    <a href="#{{ anchor }}" class="subtext">{{ heading }}</a>
+                </div>
+            {%- elif id_val == "2" -%}
+                <div class="toc-item-child">
+                    <a href="#{{ anchor }}" class="subtext">
+                        <small>- {{ heading }}</small>
+                    </a>
+                </div>
+            {%- else -%}
+                <div></div>
+            {%- endif -%}
+        {%- endfor -%}
     </div>
 </div>
 {% endblock toc %}
