@@ -1,5 +1,5 @@
-#base_url = "https://bootc-dev.github.io"
-base_url = "http://localhost"
+base_url = "https://bootc-dev.github.io"
+#base_url = "http://localhost"
 theme = "juice"
 title = "bootc"
 description = "A tool to build operating systems like we build containers"
