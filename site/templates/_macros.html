@@ -16,7 +16,11 @@
     {% endfor %}
     {% if config.extra.juice_extra_menu %}
     {% for menu in config.extra.juice_extra_menu %}
+    {% if menu.external == true %}
+    <a class="nav-item subtitle-text external" href="{{ menu.link | safe }}">{{ menu.title }}</a>
+    {% else %}
     <a class="nav-item subtitle-text" href="{{ menu.link | safe }}">{{ menu.title }}</a>
+    {% endif %}
     {% endfor %}
     {% endif %}
 </nav>
