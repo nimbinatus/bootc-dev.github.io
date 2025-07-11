@@ -41,6 +41,7 @@ generate_robots_txt = true
 highlight_code = true
 highlight_theme = "inspired-github"
 render_emoji = true
+external_links_class = "external"
 external_links_target_blank = true
 external_links_no_referrer = true
 #insert_anchor_links = "left"
@@ -50,10 +51,10 @@ external_links_no_referrer = true
 juice_logo_name = "bootc"
 juice_logo_path = "logo.png"
 juice_extra_menu = [
-    { title = "About", link = "/about" },
-    { title = "Docs", link = "https://bootc-dev.github.io/bootc/" },
-    { title = "News", link = "/news" },
-    { title = "GitHub", link = "https://github.com/bootc-dev/bootc" },
+    { title = "About", link = "/about", external = false },
+    { title = "Docs", link = "https://bootc-dev.github.io/bootc/", external = true },
+    { title = "News", link = "/news", external = false },
+    { title = "GitHub", link = "https://github.com/bootc-dev/bootc", external = true },
 ]
 favicon = "favicon.ico"
 meta_title = "Your OS, but Containers!"
