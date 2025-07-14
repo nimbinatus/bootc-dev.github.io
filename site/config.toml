@@ -1,4 +1,4 @@
-base_url = "https://bootc-dev.github.io"
+base_url = "https://bootc.dev"
 #base_url = "http://localhost"
 theme = "juice"
 title = "bootc"
@@ -59,4 +59,4 @@ juice_extra_menu = [
 favicon = "favicon.ico"
 meta_title = "Your OS, but Containers!"
 meta_description = "bootc builds operating systems using containerization principles"
-footer = "bootc, open sourced by Red Hat with <3 (c) the bootc project"
+footer = ""
