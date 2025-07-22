@@ -51,9 +51,9 @@ external_links_no_referrer = true
 juice_logo_name = "bootc"
 juice_logo_path = "logo.png"
 juice_extra_menu = [
-    { title = "About", link = "/about", external = false },
+    { title = "About", link = "about", external = false },
     { title = "Docs", link = "https://bootc-dev.github.io/bootc/", external = true },
-    { title = "News", link = "/news", external = false },
+    { title = "News", link = "news", external = false },
     { title = "GitHub", link = "https://github.com/bootc-dev/bootc", external = true },
 ]
 favicon = "favicon.ico"
