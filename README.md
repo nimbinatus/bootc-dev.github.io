@@ -24,3 +24,7 @@ zola serve
 Go to the URL for the webserver (likely `localhost:1111`) to explore the site.
 
 You can also use `zola build` to build it once to the `public` directory if you so choose.
+
+## Contributing
+
+Please follow the contributing guidelines from the main bootc-dev repo 😃
