@@ -27,6 +27,7 @@ jobs:
         env:
           PAGES_BRANCH: gh-pages
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BUILD_FLAGS: --base-url https://nimbinatus.com/bootc-dev.github.io
   preview:
     runs-on: ubuntu-latest
     if: github.ref != 'refs/heads/main'
@@ -38,6 +39,6 @@ jobs:
         uses: shalzz/zola-deploy-action@v0.21.0
         env:
           BUILD_ONLY: true
-          BUILD_FLAGS: --drafts
+          BUILD_FLAGS: --base-url https://nimbinatus.com/bootc-dev.github.io --drafts
           BUILD_THEMES: false
           CHECK_LINKS: true
