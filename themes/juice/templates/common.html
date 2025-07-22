@@ -1,0 +1,38 @@
+{# render author information, including schema information #}
+{% macro author(id) %}
+
+<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+{% if config.extra.authors[id] -%}
+    <span itemprop="name">{{ config.extra.authors[id].name }}</span>
+{%- else -%}
+{{ id }}
+{%- endif %}
+</span>
+
+{% endmacro author %}
+
+{# return the description of the page #}
+
+{% macro description(page) -%}
+{% if page.description -%}
+{{ page.description }}
+{%- elif page.summary -%}
+{{ page.summary | striptags }}
+{%- endif %}
+{%- endmacro description %}
+
+{# generate absolute URL for image #}
+{% macro abs_url(page, url) -%}
+{% if ( url is starting_with("http://") ) or (url is starting_with("https://")) -%}
+{{ url | safe }}
+{%- elif url is starting_with("/") -%}
+{{ get_url(path=url) | safe }}
+{%- else -%}
+{{ get_url(path=page.path ~ url) | safe }}
+{%- endif %}
+{%- endmacro abs_url %}
+
+{# generate a link list item #}
+{% macro link_list_item(label,href) -%}
+<a href="{{href}}" target="_blank">{{label}}</a>
+{%- endmacro link_list_item %}
