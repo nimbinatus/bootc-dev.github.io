@@ -1,0 +1,62 @@
+base_url = "https://bootc.dev"
+#base_url = "http://localhost"
+theme = "juice"
+title = "bootc"
+description = "A tool to build operating systems like we build containers"
+
+default_language = "en"
+#languages =
+#translations =
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = true
+
+generate_feeds = true
+#feed_limit =
+feed_filenames = ["rss.xml"]
+
+#hard_link_static =
+#taxonomies =
+#author =
+#compile_sass
+#minify_html
+#ignored_content
+#ignored_static
+#mode
+#output_dir
+#preserve_dotfiles_in_output
+#link_checker
+#slugify
+#search
+generate_sitemap = true
+generate_robots_txt = true
+#exclude_paginated_pages_in_sitemap
+
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
+highlight_theme = "inspired-github"
+render_emoji = true
+external_links_class = "external"
+external_links_target_blank = true
+external_links_no_referrer = true
+#insert_anchor_links = "left"
+
+[extra]
+# Put all your custom variables here
+juice_logo_name = "bootc"
+juice_logo_path = "logo.png"
+juice_extra_menu = [
+    { title = "About", link = "/about", external = false },
+    { title = "Docs", link = "https://bootc-dev.github.io/bootc/", external = true },
+    { title = "News", link = "/news", external = false },
+    { title = "GitHub", link = "https://github.com/bootc-dev/bootc", external = true },
+]
+favicon = "favicon.ico"
+meta_title = "Your OS, but Containers!"
+meta_description = "bootc builds operating systems using containerization principles"
+footer = ""

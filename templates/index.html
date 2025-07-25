@@ -1,0 +1,63 @@
+{% extends "juice/templates/index.html" %}
+
+{% block hero %}
+<section style="padding:10px">
+    <h1 class="text-center heading-text" style="font-size:50px;">
+        {{ config.extra.meta_title }}
+    </h1>
+    <h3 class="title-text text-center">
+        {{ config.extra.meta_description }}
+    </h3>
+    <div style="height: 50px;"></div>
+    <div class="text-center">
+        <a href="https://github.com/bootc-dev/bootc/releases/">
+            <img src="https://img.shields.io/github/v/release/bootc-dev/bootc?logo=github&style=for-the-badge">
+        </a>
+    </div>
+    <div class="text-center" style="padding-top: 10px;">
+        <a href="https://matrix.to/#/#bootc:fedoraproject.org">
+            <img src="https://img.shields.io/matrix/bootc%3Afedoraproject.org?label=%23bootc%3Afedoraproject.org&style=for-the-badge&logo=matrix">
+        </a>
+        &nbsp;
+        <a href="https://cloud-native.slack.com/archives/C08SKSQKG1L">
+            <img src="https://img.shields.io/badge/bootc_on_CNCF_Slack-join_us-green?style=for-the-badge&logo=slack&logoColor=white&label=bootc%20on%20CNCF%20Slack">
+        </a>
+    </div>
+    <div class="explore-more-container">
+        <div class="explore-more text"
+             onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})">
+            Explore More ⇩
+        </div>
+    </div>
+</section>
+
+{% endblock hero %}
+
+{% block fonts %}
+<link
+        href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css"
+        rel="stylesheet"
+        crossorigin="anonymous"
+/>
+<link
+        href="https://fonts.googleapis.com/css2?family=Babylonica&display=swap"
+        rel="stylesheet"
+/>
+{% endblock fonts %}
+
+{% block sidebar %}
+<div class="sidebar">
+</div>
+{% endblock sidebar %}
+
+{% block footer %}
+<footer>
+    <p class="subtext">We are a Cloud Native Computing Foundation sandbox project.</p>
+    <p><a href="https://cncf.io"><img src="img/cncf-color-bg.svg" height="75px" alt="CNCF logo"></a></p>
+<p class="subtext">
+    bootc, originally created by Red Hat and donated to open source with ❤<br/>
+    Copyright © bootc, a Series of LF Projects, LLC<br/>
+    For website terms of use, trademark policy and other project policies please see <a href="https://lfprojects.org/policies/">lfprojects.org/policies/</a>.
+</p>
+</footer>
+{% endblock footer %}
