@@ -20,7 +20,7 @@ slug = "2025-july-11-community-meeting"
 ### Agenda:
 - New release status: [bootc-dev/bootc#1390](https://github.com/bootc-dev/bootc/issues/1390)
     - folks agreed on this
-- [Laura] [KubeCon NA 2025](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/) [Project Pavilion application](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/features-add-ons/project-opportunities/#description-of-opportunities)
+- {{speaker(name="Laura")}} [KubeCon NA 2025](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/) [Project Pavilion application](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/features-add-ons/project-opportunities/#description-of-opportunities)
     - November 10-13 - Atlanta, Georgia
     - Who is going to KubeCon NA 2025 already?
         - Laura
